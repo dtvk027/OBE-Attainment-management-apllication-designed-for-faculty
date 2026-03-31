@@ -86,10 +86,10 @@ model Subject {
   coPOMappings       COPOMapping[]
   marks              Mark[]
   students           Student[]
-  template           Template         @relation(fields: [templateId], references: [id])
-  semester           Semester         @relation(fields: [semesterId], references: [id])
   faculty            User             @relation(fields: [facultyId], references: [id], onDelete: Cascade)
   globalSubject      GlobalSubject?   @relation(fields: [globalSubjectId], references: [id], onDelete: Cascade)
+  semester           Semester         @relation(fields: [semesterId], references: [id])
+  template           Template         @relation(fields: [templateId], references: [id])
   surveyResponses    SurveyResponse[]
   uploads            UploadedFile[]
 
@@ -115,8 +115,8 @@ model Mark {
   coCode        String
   maxMarks      Float?
   marksObtained Float?
-  subject       Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
   student       Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subject       Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
 
   @@unique([studentId, subjectId, assessmentId, coCode])
 }
@@ -153,8 +153,8 @@ model UploadedFile {
   uploadType       String
   uploadedById     Int
   uploadedAt       DateTime @default(now())
-  uploadedBy       User     @relation(fields: [uploadedById], references: [id])
   subject          Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  uploadedBy       User     @relation(fields: [uploadedById], references: [id])
 }
 
 model RecoveryCode {
