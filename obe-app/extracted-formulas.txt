@@ -1,0 +1,110 @@
+﻿SheetNames: [
+  'Introductory',
+  'CO-Direct Attain',
+  'CO-Indirect Attainment',
+  'CO Attainment (Dir + Ind)',
+  'PO-PSO DirectAttainment',
+  'SurveyFormQuestionary'
+]
+Processing Sheet: Mid-2 Attainment
+Found 1103 formulas.
+AB1: 0 => Formula: (AB4*60)/100
+V4: 16 => Formula: SUMIF($B3:$U3,"CO1",$B4:$U4)
+W4: 15 => Formula: SUMIF($B3:$U3,"CO2",$B4:$U4)
+X4: 14 => Formula: SUMIF($B3:$U3,"CO3",$B4:$U4)
+Y4: 14 => Formula: SUMIF($B3:$U3,"CO4",$B4:$U4)
+Z4: 11 => Formula: SUMIF($B3:$U3,"CO5",$B4:$U4)
+AA4: 70 => Formula: SUM(V4:Z4)
+AH4: 30 => Formula: SUM(AC4:AG4)
+AI4: 22 => Formula: AC4+V4
+AJ4: 21 => Formula: AD4+W4
+AK4: 20 => Formula: AE4+X4
+AL4: 20 => Formula: AF4+Y4
+AM4: 17 => Formula: AG4+Z4
+AN4: 100 => Formula: SUM(AI4:AM4)
+B5: 4.8 => Formula: (B4*60)/100
+C5: 4.2 => Formula: (C4*60)/100
+D5: 0 => Formula: (D4*60)/100
+E5: 0 => Formula: (E4*60)/100
+F5: 0 => Formula: (F4*60)/100
+G5: 0 => Formula: (G4*60)/100
+H5: 0 => Formula: (H4*60)/100
+I5: 3.6 => Formula: (I4*60)/100
+J5: 3.6 => Formula: (J4*60)/100
+K5: 1.8 => Formula: (K4*60)/100
+L5: 2.4 => Formula: (L4*60)/100
+M5: 2.4 => Formula: (M4*60)/100
+N5: 2.4 => Formula: (N4*60)/100
+O5: 2.4 => Formula: (O4*60)/100
+P5: 2.4 => Formula: (P4*60)/100
+Q5: 2.4 => Formula: (Q4*60)/100
+R5: 2.4 => Formula: (R4*60)/100
+S5: 2.4 => Formula: (S4*60)/100
+T5: 2.4 => Formula: (T4*60)/100
+U5: 2.4 => Formula: (U4*60)/100
+V5: 9.6 => Formula: (V4*60)/100
+W5: 9 => Formula: (W4*60)/100
+X5: 8.4 => Formula: (X4*60)/100
+Y5: 8.4 => Formula: (Y4*60)/100
+Z5: 6.6 => Formula: (Z4*60)/100
+AA5: 42 => Formula: (AA4*60)/100
+AC5: 3.6 => Formula: (AC4*60)/100
+AD5: 3.6 => Formula: (AD4*60)/100
+AE5: 3.6 => Formula: (AE4*60)/100
+AF5: 3.6 => Formula: (AF4*60)/100
+AG5: 3.6 => Formula: (AG4*60)/100
+AH5: 18 => Formula: (AH4*60)/100
+AI5: 13.2 => Formula: (AI4*60)/100
+AJ5: 12.6 => Formula: (AJ4*60)/100
+AK5: 12 => Formula: (AK4*60)/100
+AL5: 12 => Formula: (AL4*60)/100
+AM5: 10.2 => Formula: (AM4*60)/100
+AN5: 60 => Formula: (AN4*60)/100
+V6: 8.95 => Formula: SUMIF($B$3:$U$3,"CO1",$B6:$U6)
+W6: 8.2 => Formula: SUMIF($B$3:$U$3,"CO2",$B6:$U6)
+X6: 8.5 => Formula: SUMIF($B$3:$U$3,"CO3",$B6:$U6)
+Y6: 7.74 => Formula: SUMIF($B$3:$U$3,"CO4",$B6:$U6)
+Z6: 8.129999999999999 => Formula: SUMIF($B$3:$U$3,"CO5",$B6:$U6)
+AA6: 41.519999999999996 => Formula: V6+W6+X6+Y6+Z6
+AH6: 24.480000000000004 => Formula: SUM(AC6:AG6)
+AI6: 13.846 => Formula: AC6+V6
+AJ6: 13.096 => Formula: AD6+W6
+AK6: 13.396 => Formula: AE6+X6
+AL6: 12.636000000000001 => Formula: AF6+Y6
+AM6: 13.026 => Formula: AG6+Z6
+AN6: 66 => Formula: SUM(AI6:AM6)
+V7: 7.47 => Formula: SUMIF($B$3:$U$3,"CO1",$B7:$U7)
+W7: 8.6 => Formula: SUMIF($B$3:$U$3,"CO2",$B7:$U7)
+X7: 11.6 => Formula: SUMIF($B$3:$U$3,"CO3",$B7:$U7)
+Y7: 10.8 => Formula: SUMIF($B$3:$U$3,"CO4",$B7:$U7)
+Z7: 6.51 => Formula: SUMIF($B$3:$U$3,"CO5",$B7:$U7)
+AA7: 44.98 => Formula: V7+W7+X7+Y7+Z7
+AH7: 21.020000000000003 => Formula: SUM(AC7:AG7)
+AI7: 11.674 => Formula: AC7+V7
+AJ7: 12.804 => Formula: AD7+W7
+AK7: 15.804 => Formula: AE7+X7
+AL7: 15.004000000000001 => Formula: AF7+Y7
+AM7: 10.714 => Formula: AG7+Z7
+AN7: 66 => Formula: SUM(AI7:AM7)
+V8: 9.95 => Formula: SUMIF($B$3:$U$3,"CO1",$B8:$U8)
+W8: 10 => Formula: SUMIF($B$3:$U$3,"CO2",$B8:$U8)
+X8: 8.93 => Formula: SUMIF($B$3:$U$3,"CO3",$B8:$U8)
+Y8: 11.98 => Formula: SUMIF($B$3:$U$3,"CO4",$B8:$U8)
+Z8: 8.1 => Formula: SUMIF($B$3:$U$3,"CO5",$B8:$U8)
+AA8: 48.96 => Formula: V8+W8+X8+Y8+Z8
+AH8: 17.04 => Formula: SUM(AC8:AG8)
+AI8: 13.357999999999999 => Formula: AC8+V8
+AJ8: 13.408 => Formula: AD8+W8
+AK8: 12.338 => Formula: AE8+X8
+AL8: 15.388 => Formula: AF8+Y8
+AM8: 11.508 => Formula: AG8+Z8
+AN8: 66 => Formula: SUM(AI8:AM8)
+V9: 10.98 => Formula: SUMIF($B$3:$U$3,"CO1",$B9:$U9)
+W9: 7.63 => Formula: SUMIF($B$3:$U$3,"CO2",$B9:$U9)
+X9: 8.03 => Formula: SUMIF($B$3:$U$3,"CO3",$B9:$U9)
+Y9: 7.81 => Formula: SUMIF($B$3:$U$3,"CO4",$B9:$U9)
+Z9: 7.5 => Formula: SUMIF($B$3:$U$3,"CO5",$B9:$U9)
+AA9: 41.95 => Formula: V9+W9+X9+Y9+Z9
+AH9: 30 => Formula: SUM(AC9:AG9)
+AI9: 16.98 => Formula: AC9+V9
+AJ9: 13.629999999999999 => Formula: AD9+W9

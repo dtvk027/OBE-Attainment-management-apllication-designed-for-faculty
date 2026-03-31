@@ -1,0 +1,167 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  passwordHash  String
+  role          String         @default("faculty")
+  department    String?
+  createdAt     DateTime       @default(now())
+  recoveryCodes RecoveryCode[]
+  subjects      Subject[]
+  templates     Template[]
+  uploads       UploadedFile[]
+}
+
+model AcademicYear {
+  id        Int        @id @default(autoincrement())
+  label     String     @unique
+  semesters Semester[]
+}
+
+model Semester {
+  id             Int          @id @default(autoincrement())
+  academicYearId Int
+  number         Int
+  academicYear   AcademicYear @relation(fields: [academicYearId], references: [id])
+  subjects       Subject[]
+
+  @@unique([academicYearId, number])
+}
+
+model Template {
+  id                   Int       @id @default(autoincrement())
+  name                 String
+  assessmentGroups     String
+  coCount              Int       @default(5)
+  poCount              Int       @default(12)
+  psoCount             Int       @default(3)
+  targetPercentage     Int       @default(60)
+  attainmentThresholds String    @default("{\"level_3\":70,\"level_2\":60,\"level_1\":50}")
+  directWeightage      Float     @default(0.9)
+  indirectWeightage    Float     @default(0.1)
+  surveyGrading        String    @default("{\"excellent\":3,\"satisfactory\":2,\"average\":1}")
+  createdById          Int?
+  createdAt            DateTime  @default(now())
+  subjects             Subject[]
+  createdBy            User?     @relation(fields: [createdById], references: [id])
+}
+
+model GlobalSubject {
+  id                Int       @id @default(autoincrement())
+  code              String    @unique
+  name              String
+  documentationPath String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  subjects          Subject[]
+}
+
+model Subject {
+  id                 Int              @id @default(autoincrement())
+  globalSubjectId    Int?
+  code               String
+  name               String
+  courseType         String?
+  department         String?
+  program            String?
+  facultyId          Int
+  semesterId         Int
+  section            String
+  templateId         Int
+  totalRegistered    Int?
+  coStatements       String?
+  coordinatorName    String?
+  coordinatorContact String?
+  instructorInfo     String?
+  createdAt          DateTime         @default(now())
+  coPOMappings       COPOMapping[]
+  marks              Mark[]
+  students           Student[]
+  template           Template         @relation(fields: [templateId], references: [id])
+  semester           Semester         @relation(fields: [semesterId], references: [id])
+  faculty            User             @relation(fields: [facultyId], references: [id], onDelete: Cascade)
+  globalSubject      GlobalSubject?   @relation(fields: [globalSubjectId], references: [id], onDelete: Cascade)
+  surveyResponses    SurveyResponse[]
+  uploads            UploadedFile[]
+
+  @@unique([code, semesterId, section])
+}
+
+model Student {
+  id        Int     @id @default(autoincrement())
+  regNumber String
+  name      String?
+  subjectId Int
+  marks     Mark[]
+  subject   Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  @@unique([regNumber, subjectId])
+}
+
+model Mark {
+  id            Int     @id @default(autoincrement())
+  studentId     Int
+  subjectId     Int
+  assessmentId  String
+  coCode        String
+  maxMarks      Float?
+  marksObtained Float?
+  subject       Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  student       Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, subjectId, assessmentId, coCode])
+}
+
+model COPOMapping {
+  id           Int     @id @default(autoincrement())
+  subjectId    Int
+  coCode       String
+  poCode       String
+  mappingValue Int
+  subject      Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  @@unique([subjectId, coCode, poCode])
+}
+
+model SurveyResponse {
+  id                Int     @id @default(autoincrement())
+  subjectId         Int
+  coCode            String
+  excellentCount    Int     @default(0)
+  satisfactoryCount Int     @default(0)
+  averageCount      Int     @default(0)
+  totalParticipants Int
+  subject           Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  @@unique([subjectId, coCode])
+}
+
+model UploadedFile {
+  id               Int      @id @default(autoincrement())
+  subjectId        Int
+  originalFilename String
+  filePath         String
+  uploadType       String
+  uploadedById     Int
+  uploadedAt       DateTime @default(now())
+  uploadedBy       User     @relation(fields: [uploadedById], references: [id])
+  subject          Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+}
+
+model RecoveryCode {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  code      String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

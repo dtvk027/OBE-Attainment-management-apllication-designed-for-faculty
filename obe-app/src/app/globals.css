@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --bg-main: #ffffff;
+  --bg-subtle: #fafafa;
+  --text-main: #09090b;
+  --text-subtle: #52525b;
+  --text-muted: #71717a;
+  --border-main: #e4e4e7;
+  --border-subtle: #f4f4f5;
+  --surface: #ffffff;
+  --error: #ef4444;
+  --success: #10b981;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+}
+
+@layer base {
+  * {
+    @apply box-border m-0 p-0;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-subtle);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  input, select, textarea {
+    @apply outline-none focus:ring-0;
+  }
+}
+
+@layer components {
+  /* Dashboard & Cards */
+  .card {
+    @apply bg-white border border-zinc-200 rounded-xl shadow-sm transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply shadow-md border-zinc-300;
+  }
+
+  /* Forms & Selects */
+  .form-group {
+    @apply mb-4 flex flex-col gap-1.5;
+  }
+
+  .form-group label {
+    @apply text-[11px] font-bold text-zinc-500 uppercase tracking-wider;
+  }
+
+  .form-group input, .form-group select {
+    @apply w-full px-3 py-2 bg-white border border-zinc-200 rounded-lg text-sm text-zinc-900 transition-all placeholder:text-zinc-400;
+  }
+
+  .form-group input:focus, .form-group select:focus {
+    @apply border-zinc-400 ring-2 ring-zinc-100;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-zinc-900 text-white text-xs font-bold rounded-lg transition-all hover:bg-zinc-800 active:scale-95 disabled:opacity-50 disabled:active:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-white border border-zinc-200 text-zinc-600 text-xs font-bold rounded-lg transition-all hover:bg-zinc-50 active:scale-95;
+  }
+
+  /* Attainment Table Styling */
+  .attainment-table {
+    @apply w-full border-separate border-spacing-0 text-[12px];
+  }
+
+  .attainment-table th {
+    @apply bg-zinc-50/50 text-zinc-500 font-bold uppercase tracking-wider p-3 border-b border-r border-zinc-200 last:border-r-0 whitespace-nowrap;
+  }
+
+  .attainment-table td {
+    @apply p-3 border-b border-r border-zinc-100 last:border-r-0 text-zinc-900 font-medium tabular-nums;
+  }
+
+  .attainment-table tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .attainment-table tr:hover td {
+    @apply bg-zinc-50/30;
+  }
+
+  /* Auth Screens */
+  .auth-container {
+    @apply min-h-screen flex items-center justify-center bg-zinc-50 px-6 py-12;
+  }
+
+  .auth-card {
+    @apply w-full max-w-md bg-white p-10 border border-zinc-200 rounded-2xl shadow-lg;
+  }
+
+  .auth-card h1 {
+    @apply text-2xl font-black tracking-tight text-zinc-900 mb-1;
+  }
+
+  .auth-card p.subtitle {
+    @apply text-sm text-zinc-500 mb-8 font-medium;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-md;
+  }
+
+  .badge-indigo { @apply bg-indigo-50 text-indigo-600 border border-indigo-100; }
+  .badge-slate { @apply bg-zinc-100 text-zinc-600 border border-zinc-200; }
+
+  /* Alerts */
+  .alert {
+    @apply p-3 rounded-lg text-xs font-bold flex items-center gap-2 mb-6;
+  }
+
+  .alert-error {
+    @apply bg-red-50 text-red-600 border border-red-100;
+  }
+}
+
+/* Animations */
+.fade-in { animation: fadeIn 0.5s cubic-bezier(0, 0, 0.2, 1); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.fade-in-slow { animation: fadeIn 0.8s cubic-bezier(0, 0, 0.2, 1); }
+
+.animate { @apply transition-all duration-300; }
