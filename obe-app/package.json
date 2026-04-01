@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma migrate deploy && prisma db seed && next build",
-    "vercel-build": "prisma migrate deploy && prisma db seed && next build",
+    "build": "prisma migrate deploy && next build",
+    "vercel-build": "prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
     "seed": "node prisma/seed.js",
